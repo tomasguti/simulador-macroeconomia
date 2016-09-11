@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" />
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Macroeconomía</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-slider.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        body {
+            margin-top: 65px;
+            /*background-color: #D9FFD4;*/
+        }
+        .slider-selection {
+            background: #62b0d9;
+        }
+        @media (min-width: @screen-sm-min) {
+            .text-nav {
+                width: auto;
+            }
+        }
+        a.anchor {
+            display: block;
+            position: relative;
+            top: -65px;
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Macroeconomía</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="#indicadores"><span class="glyphicon glyphicon-signal" aria-hidden="true"></span> Indicadores</a></li>
+                    <li><a href="#presupuesto"><span class="glyphicon glyphicon-usd" aria-hidden="true"></span> Presupuesto</a></li>
+                    <li><a href="#impuestos"><span class="glyphicon glyphicon-sort" aria-hidden="true"></span> Impuestos</a></li>
+                    <li><a href="#bancocentral"><span class="glyphicon glyphicon-piggy-bank" aria-hidden="true"></span> Banco Central</a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </nav>
+
+    <div class="container">
+        <a class="anchor" id="indicadores"></a>
+        <h1>Indicadores</h1>
+        <p class="lead">Monitorea el estado del Estado.</p>
+        <h3>Mandato</h3>
+        <p>Meses que quedan hasta las próximas elecciones.</p>
+        <div class="progress">
+            <div id="mandato" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+                <span class="sr-only"></span>
+            </div>
+        </div>
+        <p class="lead">
+            <button onClick="siguienteMes();" type="button" class="btn btn-primary btn-lg">Siguiente mes</button>
+        </p>
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                <div class="panel panel-default">
+                  <div class="panel-heading">Población</div>
+                  <div class="panel-body" style="text-align: center">
+                    <h4 id="poblacion"></h4>
+                  </div>
+                  <table class="table">
+                      <tr>
+                          <td>Menores</td>
+                          <td id="menores"></td>
+                      </tr>
+                      <tr>
+                          <td>Activos</td>
+                          <td id="activos"></td>
+                      </tr>
+                      <tr>
+                          <td>Jubilados</td>
+                          <td id="jubilados"></td>
+                      </tr>
+                  </table>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                <div class="panel panel-default">
+                  <div class="panel-heading">Empresas</div>
+                  <div class="panel-body" style="text-align: center">
+                    <h4 id="empresas"></h4>
+                  </div>
+                  <table class="table">
+                      <tr>
+                          <td>Producción</td>
+                          <td id="produccion"></td>
+                      </tr>
+                  </table>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                <div class="panel panel-default">
+                  <div class="panel-heading">Empleo</div>
+                  <div class="panel-body" style="text-align: center">
+                    <h4 id="empleo"></h4>
+                  </div>
+                  <table class="table">
+                      <tr>
+                          <td>Salario mínimo</td>
+                          <td id="salarioMinimo"></td>
+                      </tr>
+                      <tr>
+                          <td>Jubilación</td>
+                          <td id="jubilacion"></td>
+                      </tr>
+                      <tr>
+                          <td>Desocupación</td>
+                          <td id="desocupacion"></td>
+                      </tr>
+                  </table>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                <div class="panel panel-default">
+                  <div class="panel-heading">Clases</div>
+                  <table class="table">
+                      <tr>
+                          <td>Alta</td>
+                          <td id="claseAlta"></td>
+                      </tr>
+                      <tr>
+                          <td>Media</td>
+                          <td id="claseMedia"></td>
+                      </tr>
+                      <tr>
+                          <td>Baja</td>
+                          <td id="claseBaja"></td>
+                      </tr>
+                  </table>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                <div class="panel panel-default">
+                  <div class="panel-heading">Consumo</div>
+                  <table class="table">
+                      <tr>
+                          <td>Interno</td>
+                          <td id="consumoInterno"></td>
+                      </tr>
+                      <tr>
+                          <td>Externo</td>
+                          <td id="consumoExterno"></td>
+                      </tr>
+                      <tr>
+                          <td>Ahorro</td>
+                          <td id="ahorro"></td>
+                      </tr>
+                  </table>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                <div class="panel panel-default">
+                  <div class="panel-heading">Economía</div>
+                  <table class="table">
+                      <tr>
+                          <td>Canasta Básica</td>
+                          <td id="canastaBasica"></td>
+                      </tr>
+                      <tr>
+                          <td>Importación</td>
+                          <td id="importacion"></td>
+                      </tr>
+                      <tr>
+                          <td>Exportación</td>
+                          <td id="exportacion"></td>
+                      </tr>
+                  </table>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                <div class="panel panel-success">
+                  <div class="panel-heading">Imágen Positiva</div>
+                  <div class="panel-body" style="text-align: center">
+                    <h4 id="imagenPositiva"></h4>
+                  </div>
+                </div>
+            </div>
+        </div><!-- /.row -->
+        <h4>Salario Mínimo</h4>
+        <input id="sliderSalarioMinimo" data-provide="slider" data-slider-id='salarioMinimo' type="text" data-slider-min="-50" data-slider-max="50" data-slider-step="0.1" data-slider-value="0" style="width: 100%;"/>
+        <h4>Jubilación</h4>
+        <input id="sliderJubilacion" data-provide="slider" data-slider-id='jubilacion' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="0.1" data-slider-value="0" style="width: 100%;"/>
+
+    </div><!-- /.container -->
+
+    <a class="anchor" id="presupuesto"></a>
+    <div class="container">
+        <h1>Presupuesto</h1>
+        <p class="lead">Distribuye los recursos económicos.</p>
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                <div class="panel panel-success">
+                  <div class="panel-heading">Disponible</div>
+                  <div class="panel-body" style="text-align: center">
+                    <h4 id="disponible"></h4>
+                  </div>
+                  <table class="table">
+                      <tr>
+                          <td>Invertido</td>
+                          <td id="invertido"></td>
+                      </tr>
+                  </table>
+                </div>
+            </div>
+        </div>
+        <h4>Educación, Ciencia y Tecnología</h4>
+        <input id="sliderEducacionCienciaTecnologia" data-provide="slider" data-slider-id='educacionCienciaTecnologia' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="0.1" data-slider-value="0" style="width: 100%;"/>
+        <h4>Salud pública y Seguridad</h4>
+        <input id="sliderSaludSeguridad" data-provide="slider" data-slider-id='saludSeguridad' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="0.1" data-slider-value="0" style="width: 100%;"/>
+        <h4>Empleo y Obra Pública</h4>
+        <input id="sliderEmpleoObraPublica" data-provide="slider" data-slider-id='empleoObra' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="0.1" data-slider-value="0" style="width: 100%;"/>
+        <p><br></p>
+    </div><!-- /.container -->
+
+    <a class="anchor" id="impuestos"></a>
+    <div class="container">
+        <h1>Impuestos</h1>
+        <p class="lead">Regula las cargas impositivas.</p>
+        <h4>Empresas</h4>
+        <input id="sliderImpuestosEmpresas" data-provide="slider" data-slider-id='empresas' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="0.1" data-slider-value="0" style="width: 100%;"/>
+        <h4>Trabajadores</h4>
+        <input id="sliderImpuestosTrabajadores" data-provide="slider" data-slider-id='trabajadores' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="0.1" data-slider-value="0" style="width: 100%;"/>
+        <h4>Importaciones</h4>
+        <input id="sliderImpuestosImportaciones" data-provide="slider" data-slider-id='importaciones' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="0.1" data-slider-value="0" style="width: 100%;"/>
+        <h4>Exportaciones</h4>
+        <input id="sliderImpuestosExportaciones" data-provide="slider" data-slider-id='exportaciones' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="0.1" data-slider-value="0" style="width: 100%;"/>
+        <p><br></p>
+    </div><!-- /.container -->
+
+    <a class="anchor" id="bancocentral"></a>
+    <div class="container">
+        <h1>Banco Central</h1>
+        <p class="lead">Controla las variables financieras.</p>
+        <h4>Tasa de Interés</h4>
+        <input id="sliderInteres" data-provide="slider" data-slider-id='interes' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="0.1" data-slider-value="0" style="width: 100%;"/>
+        <h4>Encaje Bancario</h4>
+        <input id="sliderEncaje" data-provide="slider" data-slider-id='encaje' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="0.1" data-slider-value="0" style="width: 100%;"/>
+        <p><br></p>
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                <div class="panel panel-default">
+                  <div class="panel-heading">Reservas</div>
+                  <div class="panel-body" style="text-align: center">
+                    <h4 id="reservas"></h4>
+                  </div>
+                  <table class="table">
+                      <tr>
+                          <p><button onClick="liquidarReservas();" type="button" class="btn btn-danger btn-sm center-block">Liquidar</button></p>
+                      </tr>
+                  </table>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                <div class="panel panel-default">
+                  <div class="panel-heading">Deuda</div>
+                  <div class="panel-body" style="text-align: center">
+                    <h4 id="deuda"></h4>
+                  </div>
+                  <table class="table">
+                      <tr>
+                          <p><button onClick="pedirPrestamo()" type="button" class="btn btn-success btn-sm center-block">Pedir Préstamo</button></p>
+                      </tr>
+                      <tr>
+                          <p><button onClick="pagarDeuda()" type="button" class="btn btn-danger btn-sm center-block">Pagar Deuda</button></p>
+                      </tr>
+                  </table>
+                </div>
+            </div>
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+
+    <div class="container">
+        <p style="text-align: center"><small>Desarrollado por Tomás Gutiérrez - 2016</small></p>
+    </div><!-- /.container -->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-slider.min.js"></script>
+    <script src="js/anchor-slide.js"></script>
+    <script src="js/main.js"></script>
+    <script>inicializar();</script>
+    </body>
+    </html>
